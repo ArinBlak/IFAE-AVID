@@ -1,9 +1,8 @@
 streamlit
-pandas
+scikit-learn==1.7.0
 numpy
+pandas
 matplotlib
-scikit-learn
-keras
-tensorflow
-pyulog
 joblib
+pyulog
+tensorflow==2.19.0
