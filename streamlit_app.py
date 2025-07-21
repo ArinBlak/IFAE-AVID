@@ -5,6 +5,9 @@ Created on Thu Jul 17 20:42:30 2025
 @author: Aries
 """
 
+import os
+os.environ['STREAMLIT_HOME'] = os.getcwd()
+
 import streamlit as st
 import pandas as pd
 import os
