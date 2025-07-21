@@ -6,7 +6,7 @@ Created on Thu Jul 17 20:42:30 2025
 """
 
 import os
-os.environ['STREAMLIT_HOME'] = os.getcwd()
+os.environ["XDG_CONFIG_HOME"] = "/tmp"
 
 import streamlit as st
 import pandas as pd
