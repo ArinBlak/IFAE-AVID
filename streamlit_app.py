@@ -56,6 +56,16 @@ if uploaded_file is not None:
     ax.legend()
     st.pyplot(fig)
 
+    fig, ax = plt.subplots(figsize=(14, 6))
+    ax.plot(df_pred['ensemble_anomaly'].values, label='Ensemble Anomaly', color='red')
+    ax.set_title("Ensemble Anomaly Detection (IF + AE)")
+    ax.set_xlabel("Time Index")
+    ax.set_ylabel("Anomaly (1 = Anomaly)")
+    ax.grid(True)
+    ax.legend()
+    
+    st.pyplot(fig)
+
     st.subheader("🧭 PID Error and Actuator Trend (with anomalies)")
     pid_cols = ['roll_error', 'pitch_error', 'yaw_error', 'actuator_total']
     fig, ax = plt.subplots(figsize=(14, 6))
@@ -68,3 +78,17 @@ if uploaded_file is not None:
     ax.set_ylabel("Value")
     ax.legend()
     st.pyplot(fig)
+
+    pid_features = ['roll_error', 'pitch_error', 'yaw_error', 'actuator_total']
+    fig2, ax2 = plt.subplots(figsize=(15, 8))
+    for feature in pid_features:
+        ax2.plot(df_out[feature].values, label=feature, alpha=0.7)
+    anomaly_indices = df_out[df_out['ensemble_anomaly'] == 1].index
+    ax2.scatter(anomaly_indices, df_out.loc[anomaly_indices, 'actuator_total'],
+                color='red', label='Anomaly', marker='x', zorder=5)
+    ax2.set_title("PID Feature Trends with Anomalies")
+    ax2.set_xlabel("Time Index")
+    ax2.set_ylabel("PID Values")
+    ax2.legend()
+    ax2.grid(True)
+    st.pyplot(fig2)
