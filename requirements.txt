@@ -1,8 +1,9 @@
 streamlit
-scikit-learn==1.7.0
-numpy
+scikit-learn==1.3.0
+tensorflow==2.14.0
 pandas
+numpy
 matplotlib
 joblib
 pyulog
-tensorflow==2.13.0
+
